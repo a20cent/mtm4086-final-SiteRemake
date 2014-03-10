@@ -1,0 +1,98 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Random Hacks of Kindness Ottawa</title>
+<link href="styles/css/styles.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<div class="header">
+		<div class="logo">
+			<img src="images/logo.png">
+		</div>
+		<div class="name">
+			<h1>Random Hacks of Kindness Ottawa!</h1>
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="projects.html">Projects</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content-container">
+		<div class="message">
+			<h2>Calling all designers, front-end and back-end developers!</h2>
+			<p>Come join us in working on interesting projects solving real-world problems. The cost is 5$. We provide the space to hack, 5 meals throughout <br />the weekend and awesome swag.</p>
+		</div>
+		<div class="article">
+			<img class="lounge" src="images/lounge.jpeg">
+			<div class="info">
+				<div class="date">
+					<h3>Date</h3>
+					<p>Friday December 6th - Sunday December 8th</p>
+				</div>
+				<div class="where">
+					<h3>Location</h3>
+					<p>The Shopify Lounge, 126 York Street. 
+Please enter through the glass doors at the back of the building</p>
+				</div>
+				<a href="#">Sign up to attend hackathon</a>
+			</div>
+		</div>
+	</div>
+	<div id="map-canvas" class="event-map">
+<!--<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ca/maps?q=126+york+street+ottawa&amp;ie=UTF8&amp;hq=&amp;hnear=126+York+St,+Ottawa,+Ottawa+Division,+Ontario&amp;gl=ca&amp;t=m&amp;ll=45.431317,-75.690072&amp;spn=0.007228,0.013733&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe>-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+    function initialize() {
+      var myLatlng = new google.maps.LatLng(45.429495, -75.690061);
+      var mapOptions = {
+        zoom: 18,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        heading: 90,
+        tilt: 45
+      };
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      var contentString =
+          '<div id="siteNotice">'+
+          '<h1 class="maph1">126 York Street</h1>'+
+          '<div id="bodyContent">'+
+          '<p class=mapp><b>Ottawa,Ontario</b>' +
+          '</div>'+
+          '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          // maxWidth: 200   ----We can also set a maxWidth
+      });
+
+      var marker = new google.maps.Marker({
+      position: myLatlng,
+      icon: 'http://theflyingdeveloper.com/a/2011-04-25-new-job-shopify/Shopify_logo.png',
+	  animation: google.maps.Animation.DROP,
+      map: map,
+	   title: '126 York Street'
+      });
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+      });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+	</div>
+	<div class="footer">
+		<a class="register" href="#">Register Now!</a>
+		<a class="social facebook" href="https://www.facebook.com/RandomHacks" target="blank"><img src="images/Facebook.png"></a>
+		<a class="social" href="https://twitter.com/rhok_ottawa" target="blank"><img src="images/Twitter.png"></a>
+	</div>
+</body>
+</html>
